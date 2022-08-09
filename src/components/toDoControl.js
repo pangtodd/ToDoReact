@@ -11,11 +11,27 @@ class ToDoControl extends React.Component {
     };
   }
 
+  handleClick = ()=> {
+    this.setState(prevState => ({
+      formVisibleOnPage: !prevState.formVisibleOnPage
+    }));
+  }
+
   render(){
+    let currentlyVisibleState= null;
+    let addToDoButton = null;
+    if(this.state.formVisibleOnPage){
+      currentlyVisibleState=<NewToDoForm />
+    } else {
+      currentlyVisibleState=<ToDoList />
+      addToDoButton = <button onClick={this.handleClick}> Add To Do</button>
+    }
     return(
       <React.Fragment>
+        {currentlyVisibleState}
+        {addToDoButton}
       </React.Fragment>
     );
   }
 }
-export ToDoControl;
+export default ToDoControl;

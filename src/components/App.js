@@ -9,7 +9,7 @@ function App(){
     <Container>
     <React.Fragment>
       <Header />
-      <ToDoList />
+      <ToDoControl />
     </React.Fragment>
     </Container>
   

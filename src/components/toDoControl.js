@@ -19,17 +19,19 @@ class ToDoControl extends React.Component {
 
   render(){
     let currentlyVisibleState= null;
+    let buttonText = null;
     let addToDoButton = null;
     if(this.state.formVisibleOnPage){
       currentlyVisibleState=<NewToDoForm />
+      buttonText="return to to do list";
     } else {
       currentlyVisibleState=<ToDoList />
-      addToDoButton = <button onClick={this.handleClick}> Add To Do</button>
+      buttonText="Add to do";
     }
     return(
       <React.Fragment>
         {currentlyVisibleState}
-        {addToDoButton}
+        <button onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
     );
   }

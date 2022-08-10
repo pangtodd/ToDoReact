@@ -8,7 +8,8 @@ class ToDoControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      mainToDoList: []
+      mainToDoList: [],
+      selectedTicket: null
     };
   }
 
@@ -24,6 +25,10 @@ class ToDoControl extends React.Component {
       mainToDoList: newMainToDoList,
       formVisibleOnPage: false
     });
+  }
+
+  handleChangingSelectedToDo= (id)=> {
+    const selectedToDo = this.state.mainToDoList.filter(toDo => toDo.id === id)[0];
   }
 
   render(){

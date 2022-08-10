@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 function NewToDoForm(props){
   function handleNewToDoFormSubmission(event) {
-    event.preventDefaul();
+    event.preventDefault();
     props.onNewToDoCreation({
       date: event.target.date.value,
       time: event.target.time.value,

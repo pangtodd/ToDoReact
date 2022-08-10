@@ -7,7 +7,8 @@ class ToDoControl extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      formVisibleOnPage: false
+      formVisibleOnPage: false,
+      mainToDoList: []
     };
   }
 
@@ -17,15 +18,22 @@ class ToDoControl extends React.Component {
     }));
   }
 
+  handleAddingNewToDoToList = (newToDo) => {
+    const newMainToDoList = this.state.mainToDoList.concat(newToDo);
+    this.setState({
+      mainToDoList: newMainToDoList,
+      formVisibleOnPage: false
+    });
+  }
+
   render(){
     let currentlyVisibleState= null;
     let buttonText = null;
-    let addToDoButton = null;
     if(this.state.formVisibleOnPage){
-      currentlyVisibleState=<NewToDoForm />
-      buttonText="return to to do list";
+      currentlyVisibleState = <NewToDoForm onNewToDoCreation={this.handleAddingNewToDoToList} />
+      buttonText="return to the to do list";
     } else {
-      currentlyVisibleState=<ToDoList />
+      currentlyVisibleState=<ToDoList toDoList={this.state.mainToDoList}/>;
       buttonText="Add to do";
     }
     return(

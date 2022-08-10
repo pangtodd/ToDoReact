@@ -1,5 +1,5 @@
-import Container from 'react-bootstrap/Container';
 import React from "react";
+import Container from 'react-bootstrap/Container';
 import Header from "./Header";
 import ToDoControl from "./ToDoControl"
 
@@ -7,12 +7,9 @@ import ToDoControl from "./ToDoControl"
 function App(){
   return (
     <Container>
-    <React.Fragment>
       <Header />
       <ToDoControl />
-    </React.Fragment>
     </Container>
-  
   );
 }
 

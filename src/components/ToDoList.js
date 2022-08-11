@@ -7,20 +7,23 @@ function ToDoList(props){
   return (
     <Container>
       <hr/>
-      {props.toDoList.map((toDo, index)=>
-        <ToDo 
+      {props.toDoList.map((toDo) =>
+        <ToDo
+          whenToDoClicked = { props.onToDoSelection }
           date ={toDo.date}
           time ={toDo.time}
           location ={toDo.location}
           description ={toDo.description}
-          key={index}/>
+          id={toDo.id}
+          key={toDo.id}/>
       )}
     </Container>
   );
 }
 
 ToDoList.propTypes={
-  toDoList: PropTypes.array
+  toDoList: PropTypes.array,
+  onToDoSelection: PropTypes.func
 };
 
 export default ToDoList;

@@ -1,6 +1,7 @@
 import React from "react";
 import NewToDoForm from "./NewToDoForm";
 import ToDoList from "./ToDoList";
+import ToDoDetail from "./ToDoDetail";
 
 class ToDoControl extends React.Component {
 
@@ -14,10 +15,17 @@ class ToDoControl extends React.Component {
   }
 
   handleClick = ()=> {
+    if(this.state.selectedToDo != null){
+      this.setState({
+        formVisibleOnPage: false,
+        selectedToDo: null
+      });
+    }else{
     this.setState(prevState => ({
       formVisibleOnPage: !prevState.formVisibleOnPage
     }));
   }
+}
 
   handleAddingNewToDoToList = (newToDo) => {
     const newMainToDoList = this.state.mainToDoList.concat(newToDo);
@@ -29,12 +37,16 @@ class ToDoControl extends React.Component {
 
   handleChangingSelectedToDo= (id)=> {
     const selectedToDo = this.state.mainToDoList.filter(toDo => toDo.id === id)[0];
+    this.setState({selectedToDo: selectedToDo})
   }
 
   render(){
     let currentlyVisibleState= null;
     let buttonText = null;
-    if(this.state.formVisibleOnPage){
+
+    if (this.state.selectedToDo != null){
+      currentlyVisibleState= <ToDoDetail toDo = {this.state.selectedToDo} />
+    } else if (this.state.formVisibleOnPage){
       currentlyVisibleState = <NewToDoForm onNewToDoCreation={this.handleAddingNewToDoToList} />
       buttonText="return to the to do list";
     } else {

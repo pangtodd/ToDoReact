@@ -46,11 +46,12 @@ class ToDoControl extends React.Component {
 
     if (this.state.selectedToDo != null){
       currentlyVisibleState= <ToDoDetail toDo = {this.state.selectedToDo} />
+      buttonText="back to list";
     } else if (this.state.formVisibleOnPage){
       currentlyVisibleState = <NewToDoForm onNewToDoCreation={this.handleAddingNewToDoToList} />
       buttonText="return to the to do list";
     } else {
-      currentlyVisibleState=<ToDoList toDoList={this.state.mainToDoList}/>;
+      currentlyVisibleState=<ToDoList toDoList={this.state.mainToDoList} onToDoSelection={this.handleChangingSelectedToDo}/>;
       buttonText="Add to do";
     }
     return(

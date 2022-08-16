@@ -1,6 +1,7 @@
 import React from "react";
 import { v4 } from 'uuid';
 import PropTypes from "prop-types";
+import ReusableForm from "./ReusableForm";
 
 function NewToDoForm(props){
   function handleNewToDoFormSubmission(event) {
@@ -16,24 +17,9 @@ function NewToDoForm(props){
 
   return(
     <React.Fragment>
-      <form onSubmit={handleNewToDoFormSubmission}>
-        <input
-          type='text'
-          name='date'
-          placeholder='Date' />
-        <input
-          type='text'
-          name='time'
-          placeholder='Time' />
-        <input
-          type='text'
-          name='location'
-          placeholder='Location' />
-        <textarea
-          name = "description"
-          placeholder = "Description of task" />
-        <button type="submit">create to do!</button>
-      </form>
+      <ReusableForm
+        formSubmissionHandler={handleNewToDoFormSubmission}
+        buttonText="add to do!" />
     </React.Fragment>
   );
 }
